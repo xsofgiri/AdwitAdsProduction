@@ -46,6 +46,7 @@ public class FileUtil {
 		try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(dir))) {
 			for (Path path : stream) {
 				if (!Files.isDirectory(path)) {
+					System.out.println("path.getFileName().toString() : "+path.getFileName().toString());
 					fileList.add(path.getFileName().toString());
 				}
 			}

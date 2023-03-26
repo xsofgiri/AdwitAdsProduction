@@ -8,7 +8,7 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<!-- Local DB -->
 		<property name="url"
-			value="jdbc:mysql://adwitads-t2medium.cuqwfxuvnvkx.ap-south-1.rds.amazonaws.com:4661/adwitads_api" />
+			value="jdbc:mysql://adwitads-t2medium.cuqwfxuvnvkx.ap-south-1.rds.amazonaws.com:4661/adwitads_api?zeroDateTimeBehavior=convertToNull" />
 		<property name="username" value="adwitac_weborder" />
 		<property name="password" value="adwitaws123" />
 		<property name="connectionProperties">

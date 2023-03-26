@@ -1,5 +1,7 @@
 package com.production.util;
 
+import java.sql.SQLDataException;
+import java.sql.SQLException;
 import java.sql.Time;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -159,10 +161,11 @@ public class CalendarUtil {
 		Date JavaDate = null;
 
 		try {
+//			System.out.println("SqlDate.toString() : "+SqlDate.toString());
 			if (SqlDate != null)
 				JavaDate = (new java.util.Date(SqlDate.getTime()));
-		} catch (Exception e) {
-
+		}catch (Exception e) {
+			System.out.println("convertDateSqlToJava : "+e);
 		}
 
 		return JavaDate;
@@ -181,10 +184,12 @@ public class CalendarUtil {
 		Date JavaTime = null;
 
 		try {
+//			System.out.println("SqlTime.toString() : "+SqlTime.toString());
+			
 			if (SqlTime != null)
 				JavaTime = (new java.util.Date(SqlTime.getTime()));
 		} catch (Exception e) {
-
+			System.out.println(e);
 		}
 
 		return JavaTime;
@@ -201,7 +206,8 @@ public class CalendarUtil {
 		Time SqlTime = null;
 
 		try {
-			if (JavaTime != null)
+			if (
+					JavaTime != null)
 				SqlTime = (new Time(JavaTime.getTime()));
 		} catch (Exception e) {
 
@@ -373,6 +379,15 @@ public class CalendarUtil {
 	public String getESTCurrentDateTime() {
 		Calendar currentdate = Calendar.getInstance();
 		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		TimeZone obj = TimeZone.getTimeZone("EST");
+		formatter.setTimeZone(obj);
+		return formatter.format(currentdate.getTime());
+	}
+	
+	
+	public String getESTCurrentTime() {
+		Calendar currentdate = Calendar.getInstance();
+		DateFormat formatter = new SimpleDateFormat("HH:mm:ss");
 		TimeZone obj = TimeZone.getTimeZone("EST");
 		formatter.setTimeZone(obj);
 		return formatter.format(currentdate.getTime());
@@ -764,6 +779,21 @@ public class CalendarUtil {
 	}
 	
 	
+	public long getDateDiffInMinutes(Date startDate, Date endDate) {
+		long diffHours = 0;
+		try {
+			if(startDate!=null && endDate!=null){
+				long diff = endDate.getTime() - startDate.getTime();
+				diffHours = diff / (60 * 1000) % 60; 
+			}
+
+		} catch (Exception e) { 
+			e.printStackTrace();
+		}
+
+		return diffHours;
+	}
+	
 	public boolean isDateWeekEnd(Date startDate){
 
 	    Calendar c1 = Calendar.getInstance();
@@ -782,4 +812,12 @@ public class CalendarUtil {
 	}
 
 
+	public String getFormattedDateTime(java.sql.Date date, Time time) {
+		
+		String formattedDateTime = "";
+		String formattedDate  = formatDate(convertDateSqlToJava(date), "yyyy-MM-dd");
+		String formattedTime  = formatDate(convertTimeSqlToJava(time), "hh:mm:ss");
+		
+		return formattedDate+ " "+formattedTime;
+	}
 }

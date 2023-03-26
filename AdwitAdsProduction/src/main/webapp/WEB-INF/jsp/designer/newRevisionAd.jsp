@@ -1,3 +1,17 @@
+<%@page import="com.production.util.Constants"%>
+<%@page import="com.production.entity.Designer"%>
+<%
+String contextPath = request.getContextPath();
+String assetsPath = contextPath+"/assets";
+assetsPath = Constants.S3_ASSET_URL;
+
+Designer designer = session.getAttribute(Constants.DESIGNER_DTO) != null
+? (Designer) session.getAttribute(Constants.DESIGNER_DTO)
+: null;
+
+%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 	<!--begin::Head-->
@@ -7,20 +21,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta property="og:locale" content="en_US" />
 		<meta property="og:type" content="article" />
-		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+		<link rel="shortcut icon" href="<%=assetsPath %>/media/logos/favicon.ico" />
 		<!--begin::Fonts-->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		<!--end::Fonts-->
 		<!--begin::Page Vendor Stylesheets(used by this page)-->
-		<link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
-		<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="<%=assetsPath %>/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="<%=assetsPath %>/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
 		<!--end::Page Vendor Stylesheets-->
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
-		<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/csr-custom.css" rel="stylesheet" type="text/css" />
+		<link href="<%=assetsPath %>/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="<%=assetsPath %>/css/style.bundle.css" rel="stylesheet" type="text/css" />
+        <link href="<%=assetsPath %>/css/csr-custom.css" rel="stylesheet" type="text/css" />
 		<!--begin::Page Vendor Stylesheets(used by this page)-->
-		<link href="assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="<%=assetsPath %>/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
 		<!--end::Page Vendor Stylesheets-->
 
 	</head>
@@ -47,7 +61,7 @@
 							<!--begin::Logo-->
 							<div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-15">
 								<a href="?page=index">
-									<img alt="Logo" src="https://adwitads.com/weborders/assets/new_client/img/logo.png" class="h-20px h-lg-30px" />
+									<img alt="Logo" src="https://adwitads.com/weborders/<%=assetsPath %>/new_client/img/logo.png" class="h-20px h-lg-30px" />
 								</a>
 							</div>
 							<!--end::Logo-->
@@ -201,7 +215,7 @@
 									<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
 										<!--begin::Menu wrapper-->
 										<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-											<img src="assets/media/avatars/300-1.jpg" alt="user" />
+											<img src="<%=assetsPath %>/media/avatars/300-1.jpg" alt="user" />
 										</div>
 
 									
@@ -212,7 +226,7 @@
 												<div class="menu-content d-flex align-items-center px-3">
 													<!--begin::Avatar-->
 													<div class="symbol symbol-50px me-5">
-														<img alt="Logo" src="assets/media/avatars/300-1.jpg" />
+														<img alt="Logo" src="<%=assetsPath %>/media/avatars/300-1.jpg" />
 													</div>
 													<!--end::Avatar-->
 													<!--begin::Username-->
@@ -398,7 +412,7 @@
                                                        <div class="row">
                                                         
                                                            <div class="col-md-12 ps-6 pe-6 pt-6 pb-6 ">
-                                                            <iframe class="border-radius-5" width="100%" height="300px" src="assets/media/nature.jpeg" ></iframe>
+                                                            <iframe class="border-radius-5" width="100%" height="300px" src="<%=assetsPath %>/media/nature.jpeg" ></iframe>
                                                             </div>
                                                             
                                                        </div>
@@ -524,26 +538,26 @@
 
 		<!--end::Modals-->
 		<!--begin::Javascript-->
-		<script>var hostUrl = "assets/";</script>
+		<script>var hostUrl = "<%=assetsPath %>/";</script>
 		<!--begin::Global Javascript Bundle(used by all pages)-->
-		<script src="assets/plugins/global/plugins.bundle.js"></script>
-		<script src="assets/js/scripts.bundle.js"></script>
+		<script src="<%=assetsPath %>/plugins/global/plugins.bundle.js"></script>
+		<script src="<%=assetsPath %>/js/scripts.bundle.js"></script>
 		<!--end::Global Javascript Bundle-->
 		<!--begin::Page Vendors Javascript(used by this page)-->
-		<script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
-		<script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+		<script src="<%=assetsPath %>/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+		<script src="<%=assetsPath %>/plugins/custom/datatables/datatables.bundle.js"></script>
 		<!--end::Page Vendors Javascript-->
 		<!--begin::Page Custom Javascript(used by this page)-->
-		<script src="assets/js/widgets.bundle.js"></script>
-		<script src="assets/js/custom/widgets.js"></script>
-		<script src="assets/js/custom/intro.js"></script>
+		<script src="<%=assetsPath %>/js/widgets.bundle.js"></script>
+		<script src="<%=assetsPath %>/js/custom/widgets.js"></script>
+		<script src="<%=assetsPath %>/js/custom/intro.js"></script>
 
 		<!--begin::Page Vendors Javascript(used by this page)-->
-		<script src="assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+		<script src="<%=assetsPath %>/plugins/custom/prismjs/prismjs.bundle.js"></script>
 		<!--end::Page Vendors Javascript-->
 		<!--begin::Page Custom Javascript(used by this page)-->
-		<script src="assets/js/custom/documentation/documentation.js"></script>
-		<script src="assets/js/custom/documentation/search.js"></script>
+		<script src="<%=assetsPath %>/js/custom/documentation/documentation.js"></script>
+		<script src="<%=assetsPath %>/js/custom/documentation/search.js"></script>
 		<!--end::Page Custom Javascript-->
         
         <script>
